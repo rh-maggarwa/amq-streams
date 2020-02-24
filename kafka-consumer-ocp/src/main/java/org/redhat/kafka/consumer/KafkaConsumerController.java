@@ -8,12 +8,13 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-public class KafkaConsumerController {
 
-	public static void getMessage() throws Exception {
-		System.out.println("Inside KafkaConsumerController|");
+public class KafkaConsumerController {
+	
+	public static void getMessage(String bootstrapServer) throws Exception {
+		System.out.println("Inside KafkaConsumerController|bootstrapServer="+bootstrapServer);
 		Properties properties = new Properties();
-		properties.put("bootstrap.servers", "https://my-cluster-kafka-bootstrap-amq-streams.apps.cluster-d45b.d45b.sandbox464.opentlc.com:443"); //my-cluster-kafka-bootstrap-tag-it.apps.dev-ocp4.axisb.com:443
+		properties.put("bootstrap.servers", bootstrapServer);
 		properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		properties.put("group.id", "test_group");
